@@ -34,6 +34,7 @@
 import { browser } from '$app/environment';
 import {
 	CONFIG_LOCALSTORAGE_KEY,
+	DEFAULT_MOBILE_BREAKPOINT,
 	SETTING_CONFIG_DEFAULT,
 	USER_OVERRIDES_LOCALSTORAGE_KEY
 } from '$lib/constants';
@@ -121,6 +122,16 @@ class SettingsStore {
 				...SETTING_CONFIG_DEFAULT,
 				...savedVal
 			};
+
+			// Default sendOnEnter to false on mobile when the user has no saved preference
+			if (!('sendOnEnter' in savedVal)) {
+				const isMobile = window.matchMedia(
+					`(max-width: ${DEFAULT_MOBILE_BREAKPOINT - 1}px)`
+				).matches;
+				if (isMobile) {
+					this.config.sendOnEnter = false;
+				}
+			}
 
 			// Load user overrides
 			const savedOverrides = JSON.parse(
