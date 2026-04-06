@@ -128,7 +128,7 @@ export const SETTING_CONFIG_INFO: Record<string, string> = {
 	autoShowSidebarOnNewChat:
 		'Automatically show sidebar when starting a new chat. Disable to keep the sidebar hidden until you click on it.',
 	sendOnEnter:
-		'Use Enter to send messages and Shift + Enter for new lines. When disabled, Ctrl/Cmd + Enter sends instead.',
+		'Use Enter to send messages and Shift + Enter for new lines. When disabled, use Ctrl/Cmd + Enter.',
 	autoMicOnEmpty:
 		'Automatically show microphone button instead of send button when textarea is empty for models with audio modality support.',
 	fullHeightCodeBlocks:
