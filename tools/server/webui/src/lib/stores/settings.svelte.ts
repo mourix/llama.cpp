@@ -34,10 +34,10 @@
 import { browser } from '$app/environment';
 import {
 	CONFIG_LOCALSTORAGE_KEY,
-	DEFAULT_MOBILE_BREAKPOINT,
 	SETTING_CONFIG_DEFAULT,
 	USER_OVERRIDES_LOCALSTORAGE_KEY
 } from '$lib/constants';
+import { IsMobile } from '$lib/hooks/is-mobile.svelte';
 import { ParameterSyncService } from '$lib/services/parameter-sync.service';
 import { serverStore } from '$lib/stores/server.svelte';
 import {
@@ -125,10 +125,7 @@ class SettingsStore {
 
 			// Default sendOnEnter to false on mobile when the user has no saved preference
 			if (!('sendOnEnter' in savedVal)) {
-				const isMobile = window.matchMedia(
-					`(max-width: ${DEFAULT_MOBILE_BREAKPOINT - 1}px)`
-				).matches;
-				if (isMobile) {
+				if (new IsMobile().current) {
 					this.config.sendOnEnter = false;
 				}
 			}
