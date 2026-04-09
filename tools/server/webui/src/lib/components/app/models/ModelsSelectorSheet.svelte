@@ -243,7 +243,7 @@
 			</button>
 
 			<Sheet.Root bind:open={sheetOpen} onOpenChange={handleSheetOpenChange}>
-				<Sheet.Content side="bottom" class="max-h-[85vh] gap-1">
+				<Sheet.Content side="bottom" class="max-h-[85vh] gap-1" onOpenAutoFocus={(e) => e.preventDefault()}>
 					<Sheet.Header>
 						<Sheet.Title>Select Model</Sheet.Title>
 
